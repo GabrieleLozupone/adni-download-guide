@@ -1,0 +1,18 @@
+# Never commit ADNI data, exports, ID lists or download links.
+*.zip
+*.dcm
+*.nii
+*.nii.gz
+*.csv
+*.tsv
+*.xlsx
+urls*.txt
+*ids*.txt
+missing*.txt
+batches*.txt
+data/
+downloads/
+ADNI/
+*.done
+__pycache__/
+.DS_Store
