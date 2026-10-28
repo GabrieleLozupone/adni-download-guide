@@ -4,41 +4,85 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {% seo %}
+  <link rel="icon" href="{{ '/assets/img/favicon.svg' | relative_url }}" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
 </head>
-<body>
+{% assign is_home = false %}{% if page.url == "/" %}{% assign is_home = true %}{% endif %}
+<body class="{% if is_home %}home{% else %}doc{% endif %}">
   <header class="topbar">
     <button class="menu-btn" aria-label="Open menu" onclick="document.body.classList.toggle('nav-open')">&#9776;</button>
-    <a class="brand" href="{{ '/' | relative_url }}">ADNI download guide</a>
+    <a class="brand" href="{{ '/' | relative_url }}">{% include logo.svg %}<span>ADNI download guide</span></a>
     <span class="badge" title="IDA and ADNI rules change often">Verified {{ site.verified }}</span>
-    <a class="gh" href="https://github.com/{{ site.repository }}">GitHub</a>
+    <a class="gh-btn" href="https://github.com/{{ site.repository }}">{% include github.svg %}<span>GitHub</span></a>
   </header>
 
   <div class="layout">
     <nav class="sidebar" aria-label="Guide steps">
+      <p class="side-title">The guide</p>
       <ul>
         {% for item in site.nav %}
-          {% assign item_url = item.url | relative_url %}
-          {% assign page_url = page.url | relative_url %}
-          <li><a href="{{ item_url }}"{% if item_url == page_url %} class="active"{% endif %}>{{ item.title }}</a></li>
+          <li><a href="{{ item.url | relative_url }}"{% if item.url == page.url %} class="active"{% endif %}>
+            <span class="dot">{% if item.n != "" %}{{ item.n }}{% else %}&#8962;{% endif %}</span>{{ item.title }}</a></li>
         {% endfor %}
       </ul>
-      <p class="side-note">Unofficial guide. Not affiliated with ADNI, LONI or USC. Contains no ADNI data.</p>
+      <div class="side-card">
+        <strong>No ADNI data here.</strong>
+        You need your own approved ADNI account. Never share ADNI data or paste it into AI tools.
+      </div>
     </nav>
 
-    <main class="content">
-      {{ content }}
-      <footer class="foot">
-        <p>Last verified on <strong>{{ site.verified }}</strong>. IDA and the ADNI rules change: when in doubt, the
-        <a href="https://adni.loni.usc.edu/data-samples/adni-data/">official ADNI pages</a> and the
-        <a href="https://ida.loni.usc.edu/explore/jsp/support/IDA_User_Manual.pdf">IDA manual</a> are right.
-        Something changed? <a href="https://github.com/{{ site.repository }}/issues">Open an issue</a> and say the date.</p>
-        <p>MIT licensed · <a href="https://github.com/{{ site.repository }}">source on GitHub</a></p>
-      </footer>
+    <main class="main">
+      {% if is_home %}{% include hero.html %}{% endif %}
+      <div class="wrap">
+        <article class="content">
+          {{ content }}
+
+          {% unless is_home %}
+          {% assign idx = nil %}
+          {% for item in site.nav %}{% if item.url == page.url %}{% assign idx = forloop.index0 %}{% endif %}{% endfor %}
+          {% if idx != nil %}
+            {% assign prev_i = idx | minus: 1 %}{% assign next_i = idx | plus: 1 %}
+            {% assign prev = site.nav[prev_i] %}{% assign next = site.nav[next_i] %}
+            <div class="pager">
+              {% if idx > 0 %}<a class="prev" href="{{ prev.url | relative_url }}"><small>← Previous</small>{{ prev.title }}</a>{% else %}<span></span>{% endif %}
+              {% if next %}<a class="next" href="{{ next.url | relative_url }}"><small>Next →</small>{{ next.title }}</a>{% endif %}
+            </div>
+          {% endif %}
+          {% endunless %}
+
+          <footer class="foot">
+            <p>Last verified on <strong>{{ site.verified }}</strong>. IDA and the ADNI rules change: when in doubt, the
+            <a href="https://adni.loni.usc.edu/data-samples/adni-data/">official ADNI pages</a> and the
+            <a href="https://ida.loni.usc.edu/explore/jsp/support/IDA_User_Manual.pdf">IDA manual</a> are right.
+            Something changed? <a href="https://github.com/{{ site.repository }}/issues">Open an issue</a> and say the date.</p>
+            <p>Unofficial, not affiliated with ADNI, LONI or USC · MIT licensed ·
+            <a href="https://github.com/{{ site.repository }}">source on GitHub</a></p>
+          </footer>
+        </article>
+        <aside class="toc" aria-label="On this page"><p class="side-title">On this page</p><ul id="toc"></ul></aside>
+      </div>
     </main>
   </div>
+
+  <script>
+    (function () {
+      var hs = document.querySelectorAll('.content h2[id]'), toc = document.getElementById('toc');
+      if (hs.length < 2) { document.querySelector('.toc').style.display = 'none'; return; }
+      hs.forEach(function (h) {
+        var li = document.createElement('li'), a = document.createElement('a');
+        a.href = '#' + h.id; a.textContent = h.textContent; li.appendChild(a); toc.appendChild(li);
+      });
+      var links = toc.querySelectorAll('a');
+      var obs = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (e.isIntersecting) links.forEach(function (l) { l.classList.toggle('on', l.getAttribute('href') === '#' + e.target.id); });
+        });
+      }, { rootMargin: '-70px 0px -70% 0px' });
+      hs.forEach(function (h) { obs.observe(h); });
+    })();
+  </script>
 </body>
 </html>
