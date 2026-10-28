@@ -9,6 +9,7 @@ When you apply for ADNI you sign the DUA. Breaking it ends your access, and ADNI
 For a deep-learning project, these are the points that matter most.
 
 ## What you may NOT do
+
 | Rule | In practice |
 | --- | --- |
 | No redistribution of participant-level data, in any form | Don't put ADNI CSVs, images, NIfTI files, preprocessed tensors, embeddings or "anonymised" derived tables on GitHub, Hugging Face, Kaggle, Zenodo, Google Drive links, and so on. The DUA says this applies "even if it is sufficiently processed or altered and lack ADNI subject codes". |
@@ -18,6 +19,7 @@ For a deep-learning project, these are the points that matter most.
 | Careful with cloud compute | You may train on cloud GPUs (AWS, Azure, GCP, Runpod, ...), but you must check their terms first so your workflow stays secure. |
 
 ## What you MAY do
+
 - Train models on ADNI. The DUA says this is "both permitted and encouraged".
 - Publish **summary (not participant-level) results**: tables of means, model metrics, figures of group results.
 - Publish code (like this repository) that contains no data.
@@ -27,6 +29,7 @@ For a deep-learning project, these are the points that matter most.
   Submission Form, and ADNI decides whether to distribute it through LONI.
 
 ## What you MUST do when you publish
+
 1. **Record the download date** of your data and report it in the Methods section. ADNI updates tables, so this is
    your data "version".
 2. **Abstracts:** cite ADNI as the data source and its funding, as space allows.
@@ -40,6 +43,7 @@ For a deep-learning project, these are the points that matter most.
 4. **Answer the yearly update request.** Your account expires if you don't.
 
 ## Before you start: a 1-minute check
+
 - [ ] I belong to a scientific or educational institution and my project is research or teaching.
 - [ ] My storage (laptop, server, cloud) is only reachable by my team.
 - [ ] My code repository will not contain data, data-derived files or download links.

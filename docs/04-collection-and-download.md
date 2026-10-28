@@ -7,6 +7,7 @@ IDA only downloads images that are in a **collection**: search → tick → **Ad
 collection.
 
 ## Step 1: add images to a collection
+
 1. Run your search ([step 3](03-choose-images.md)). For a list of Image IDs, paste them in the **Image ID** box of
    Advanced Image Search.
 2. On the results tab, tick the images (or the select-all box of the page) → **Add to Collection**.
@@ -16,6 +17,7 @@ collection.
 4. Repeat for the next batch, adding to the same collection.
 
 ## Step 2: check the collection (don't skip this)
+
 1. **Data Collections** tab → **My Collections** → your collection.
 2. Compare the image count with what you wanted. **In our experience IDA occasionally drops a few images** when you
    add large batches (between 5 and 41 out of several thousand, in our case).
@@ -29,6 +31,7 @@ A collection shows two subsets, **Not Downloaded** and **Downloaded** (images yo
 If you need everything, download both.
 
 ## Step 3: choose how to download
+
 | Option | When | What you get |
 | --- | --- | --- |
 | **1-Click Download** | Small collections (a few GB) | One ZIP, plus a "Download Metadata" link |
@@ -36,6 +39,7 @@ If you need everything, download both.
 | **IDA Downloader** | Unstable connection, very large downloads | Official Java (12+) command-line tool that takes the URL list and retries automatically. Instructions come in its README. |
 
 Tips:
+
 - **Smaller ZIPs are safer.** If a 9 GB ZIP fails at 95% you start again. A grouping with more, smaller ZIPs costs
   you less when something breaks.
 - **Download one file at a time.** Parallel downloads don't make IDA faster, and stressing the server can get you
@@ -46,8 +50,9 @@ Tips:
   in** to IDA. Follow that rule.
 
 ## Step 4: download with resume (optional helper)
-If you have the URL list and use a terminal, [`download_urls.sh`](../scripts/) downloads the links one by one with
+If you have the URL list and use a terminal, [`download_urls.sh`](https://github.com/GabrieleLozupone/adni-download-guide/tree/main/scripts) downloads the links one by one with
 `curl`. It resumes partial files, retries, skips finished ones and writes a log:
+
 ```bash
 bash scripts/download_urls.sh urls.txt /path/to/ADNI_zips
 ```

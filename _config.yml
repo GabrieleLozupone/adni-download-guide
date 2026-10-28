@@ -1,3 +1,50 @@
 title: "ADNI download guide"
 description: "How to download the ADNI dataset (Alzheimer's Disease Neuroimaging Initiative) from LONI IDA: MRI, PET and clinical tables, step by step."
-theme: jekyll-theme-cayman
+baseurl: "/adni-download-guide"
+url: "https://gabrielelozupone.github.io"
+repository: "GabrieleLozupone/adni-download-guide"
+verified: "28 October 2026"
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
+
+plugins:
+  - jekyll-relative-links
+  - jekyll-optional-front-matter
+  - jekyll-titles-from-headings
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+relative_links:
+  enabled: true
+  collections: false
+
+titles_from_headings:
+  strip_title: false
+
+defaults:
+  - scope: { path: "" }
+    values: { layout: "default" }
+
+exclude:
+  - CLAUDE.md
+  - tests/
+  - scripts/*.py
+  - scripts/*.sh
+  - .gitignore
+
+nav:
+  - { title: "Overview", url: "/" }
+  - { title: "0. Rules (read first)", url: "/docs/00-rules.html" }
+  - { title: "1. Get access", url: "/docs/01-get-access.html" }
+  - { title: "2. Clinical tables", url: "/docs/02-tabular-data.html" }
+  - { title: "3. Choose images", url: "/docs/03-choose-images.html" }
+  - { title: "4. Collection & download", url: "/docs/04-collection-and-download.html" }
+  - { title: "5. After the download", url: "/docs/05-after-download.html" }
+  - { title: "Troubleshooting", url: "/docs/06-troubleshooting.html" }
+  - { title: "Glossary", url: "/docs/glossary.html" }
+  - { title: "Helper scripts", url: "/scripts/" }
+  - { title: "Using an AI agent", url: "/AGENTS.html" }

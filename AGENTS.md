@@ -29,6 +29,7 @@ Allowed: reading this repository, the official ADNI/IDA documents and the user's
 **column names**. A header line (`head -1 file.csv`) holds no participant data, but the user should paste it.
 
 ## How to guide the user
+
 1. **Start by asking** (one short message): Do they already have ADNI access? What is the project (task, modalities:
    T1 MRI, FLAIR, PET amyloid/tau/FDG, tables only)? Which phases or visits (baseline only or all)? How much disk, and
    laptop or server?
@@ -50,6 +51,7 @@ Allowed: reading this repository, the official ADNI/IDA documents and the user's
    requires, and send manuscripts to the ADNI DPC before journal submission.
 
 ## Commands you can hand to the user (they run them; outputs stay on disk)
+
 ```bash
 python scripts/select_one_per_visit.py search.csv --prefer "<regex1>" "<regex2>" --out selected.csv --ids-out wanted_ids.txt
 python scripts/ids_to_batches.py wanted_ids.txt --size 500 --out batches.txt

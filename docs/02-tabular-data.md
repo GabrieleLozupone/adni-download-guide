@@ -7,6 +7,7 @@ and, for imaging, which images the ADNI teams have already checked. Tables are s
 directly, with no collection needed.
 
 ## How
+
 1. Log in to IDA → **Select Study** → **ADNI**.
 2. **DOWNLOAD** menu → **Study Data**.
 3. Browse the categories in the left panel, or type a table name in the search box.
@@ -35,6 +36,7 @@ Want everything? Downloading all Study Data takes an hour or two (there are a fe
 them on the fly). Download them **one at a time**; don't open many downloads in parallel.
 
 ## How ADNI identifies people, visits and time
+
 | Field | Meaning | Use it for |
 | --- | --- | --- |
 | `RID` | Participant number, the same in every phase | **The person.** Join tables on it and split train/test on it. |
@@ -45,6 +47,7 @@ them on the fly). Download them **one at a time**; don't open many downloads in 
 | Image ID (`IMAGEUID`, `LONIImage`, `PHC_LONIUID`, ...) | IDA's number for one image | Selecting and finding images ([next step](03-choose-images.md)). |
 
 Two common mistakes:
+
 - **Splitting by visit or by image instead of by `RID`.** The same brain ends up in train and test, and your
   accuracy is inflated.
 - **Using information from the future.** For example, a "final diagnosis" column used as the label at baseline.

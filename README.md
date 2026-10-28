@@ -31,6 +31,7 @@ IDA before.
 | – | [Troubleshooting](docs/06-troubleshooting.md) · [Glossary](docs/glossary.md) | |
 
 ## The five things people get wrong
+
 1. **Images can only be downloaded from a collection.** You search, tick images, "Add to Collection", then download
    the collection. There is no direct "download all of ADNI" button.
 2. **ADNI has many images per visit** (repeats, different processing levels, localizers). Decide your rule *before*
@@ -41,7 +42,7 @@ IDA before.
    See [the rules](docs/00-rules.md).
 
 ## Helper scripts (optional)
-The guide works with only a browser. The [scripts](scripts/) are small, dependency-free helpers for the boring parts
+The guide works with only a browser. The [scripts](https://github.com/GabrieleLozupone/adni-download-guide/tree/main/scripts) are small, dependency-free helpers for the boring parts
 that run **on files you have already downloaded yourself**: splitting long Image ID lists, keeping one image per visit,
 finding images missing from a collection, downloading ZIP links with resume, testing ZIPs and indexing the unpacked
 images. Requirements: Python 3.8+, `curl`, and optionally [`dcm2niix`](https://github.com/rordenlab/dcm2niix).
@@ -49,9 +50,10 @@ images. Requirements: Python 3.8+, `curl`, and optionally [`dcm2niix`](https://g
 ## Using an AI agent as your guide (optional)
 Open this folder with a coding agent and ask "help me download ADNI". It will interview you, take you through the steps
 one at a time and keep a private checklist in `.adni-progress.md`.
+
 - [`AGENTS.md`](AGENTS.md): instructions for any agent that reads it (Codex, Cursor, Gemini CLI, ...).
-- [`CLAUDE.md`](CLAUDE.md) and two Claude Code skills: [`adni-download`](.claude/skills/adni-download/SKILL.md) (guided
-  walkthrough) and [`adni-verify-download`](.claude/skills/adni-verify-download/SKILL.md) (checks after the download).
+- [`CLAUDE.md`](https://github.com/GabrieleLozupone/adni-download-guide/blob/main/CLAUDE.md) and two Claude Code skills: [`adni-download`](https://github.com/GabrieleLozupone/adni-download-guide/blob/main/.claude/skills/adni-download/SKILL.md) (guided
+  walkthrough) and [`adni-verify-download`](https://github.com/GabrieleLozupone/adni-download-guide/blob/main/.claude/skills/adni-verify-download/SKILL.md) (checks after the download).
 
 **The agent never sees your data.** The ADNI DUA forbids giving participant-level data to third-party AI tools, so
 the agent is told to give you commands to run yourself and to read back only summary counts. You are still
@@ -59,6 +61,7 @@ responsible: don't paste tables, IDs, dates or download links into the chat, and
 doesn't need to access.
 
 ## Official sources (always check these first)
+
 - ADNI data access page: <https://adni.loni.usc.edu/data-samples/adni-data/>
 - ADNI Data Use Agreement (PDF): <https://adni.loni.usc.edu/wp-content/themes/adni_2023/documents/ADNI_Data_Use_Agreement.pdf>
 - ADNI Data Sharing & Publication Policy (PDF): <https://adni.loni.usc.edu/wp-content/themes/adni_2023/documents/ADNI_DSP_Policy.pdf>
@@ -70,4 +73,4 @@ Found something that changed? Please open an issue or a pull request and say **t
 ADNI data, screenshots that show participant information, or your download links (they work without a login).
 
 ## License
-Text and scripts: [MIT](LICENSE). ADNI data are governed only by the ADNI Data Use Agreement.
+Text and scripts: [MIT](https://github.com/GabrieleLozupone/adni-download-guide/blob/main/LICENSE). ADNI data are governed only by the ADNI Data Use Agreement.

@@ -10,6 +10,7 @@ So decide a rule first. The usual one for deep learning is
 **one image per participant × visit × modality**, chosen by an explicit preference.
 
 ## Words you need
+
 - **Image ID**: IDA's number for one image (shown as `I000000` in folder names and as a plain number in tables).
 - **Image type** (Advanced Search → IMAGE TYPES):
   - *Original*: as acquired, usually DICOM.
@@ -20,12 +21,14 @@ So decide a rule first. The usual one for deep learning is
 
 ## What to pick, by modality (a reasonable default)
 **T1 MRI**
+
 - ADNI1, ADNIGO, ADNI2: ADNI offers corrected versions (GradWarp, B1, N3). We received these as **NIfTI** (`.nii`).
 - ADNI3, ADNI4: corrections are done on the scanner, so take the original images (DICOM), typically
   `Accelerated Sagittal MPRAGE` or the vendor equivalent.
 - Background: ADNI's [MRI pre-processing page](https://adni.loni.usc.edu/data-samples/adni-data/neuroimaging/mri/mri-pre-processing/).
 
 **PET (amyloid, tau, FDG)**
+
 - ADNI provides several pre-processing levels. The most harmonized across scanners is usually the one whose
   description ends in `Uniform 6mm Res` (smoothed to a common resolution); then `Uniform Resolution`,
   `Std Img and Vox Siz`, `Co-registered, Averaged`, and finally the raw dynamic frames.
@@ -34,17 +37,19 @@ So decide a rule first. The usual one for deep learning is
 ## Two ways to choose
 
 ### Way A: from the search results (simple)
+
 1. IDA → **SEARCH** → **Advanced Image Search**.
 2. Set: Project/Phase, **Modality**, **Image types**, and Description keywords (for example `MPRAGE`).
 3. Under "Display in result", add the columns you want (Visit, Study Date, Description, Image ID, ...).
 4. **SEARCH** → on the results tab click **CSV Download**. You now have a list of candidates.
 5. Keep one image per participant/date/modality with your rule. The helper
-   [`select_one_per_visit.py`](../scripts/) does this from the CSV with a preference list you write:
+   [`select_one_per_visit.py`](https://github.com/GabrieleLozupone/adni-download-guide/tree/main/scripts) does this from the CSV with a preference list you write:
    ```bash
    python scripts/select_one_per_visit.py search_results.csv \
        --prefer "GradWarp.*N3" "Accelerated Sagittal MPRAGE" "MPRAGE" \
        --out selected.csv
    ```
+
 6. Then add the chosen Image IDs to a collection ([step 4](04-collection-and-download.md)).
 
 ### Way B: from ADNI's own quality and analysis tables (better)
@@ -64,14 +69,16 @@ dates), keep one per visit, and you have your list.
 
 ## Search by Image ID
 Advanced Image Search has an **Image ID** box that accepts a comma-separated list. Our notes:
+
 - Tick **all the modalities** your IDs belong to (MRI and PET) and **all the image types** (Original, Pre-processed,
   Post-processed). Otherwise some IDs silently return nothing.
-- Work in batches: we used up to 1,000 IDs per search. [`ids_to_batches.py`](../scripts/) splits a long list into
+- Work in batches: we used up to 1,000 IDs per search. [`ids_to_batches.py`](https://github.com/GabrieleLozupone/adni-download-guide/tree/main/scripts) splits a long list into
   ready-to-paste lines.
 - Compare the number of results with the number of IDs you pasted. If it's lower, some IDs are not available to your
   account, belong to an unticked modality/type, or were mistyped.
 
 ## Before downloading: how big will it be?
+
 - In our download (October 2026), about 34,000 images (T1 + PET + masks) took about **313 GB** as ZIP files, roughly
   9 MB per image on average. Sizes vary a lot by modality and phase.
 - IDA shows the size of each ZIP before you download it ([step 4](04-collection-and-download.md)).
