@@ -69,7 +69,7 @@
 
   <script>
     (function () {
-      var hs = document.querySelectorAll('.content h2[id]'), toc = document.getElementById('toc');
+      var hs = Array.prototype.filter.call(document.querySelectorAll('.content h2[id]'), function (h) { return h.offsetParent !== null; }), toc = document.getElementById('toc');
       if (hs.length < 2) { document.querySelector('.toc').style.display = 'none'; return; }
       hs.forEach(function (h) {
         var li = document.createElement('li'), a = document.createElement('a');
