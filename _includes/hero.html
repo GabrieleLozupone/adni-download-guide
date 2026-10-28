@@ -1,23 +1,14 @@
-<section class="hero">
-  <div class="hero-inner">
-    <span class="hero-kicker">Unofficial · No data included · Verified {{ site.verified }}</span>
-    <h1 class="hero-title">Download the <span class="grad">ADNI dataset</span><br>without getting lost in IDA</h1>
-    <p class="hero-sub">A plain, step-by-step guide to the Alzheimer's Disease Neuroimaging Initiative data on LONI IDA:
-      clinical tables, MRI and PET, from the access request to clean NIfTI files. Written for machine-learning and
-      deep-learning researchers.</p>
-    <div class="hero-actions">
-      <a class="btn primary" href="{{ '/docs/00-rules.html' | relative_url }}">Start with step 0 →</a>
-      <a class="btn ghost" href="https://github.com/{{ site.repository }}">{% include github.svg %} View on GitHub</a>
-    </div>
+<div class="intro">
+  <h1>How to download ADNI from LONI IDA</h1>
+  <p class="lead">A step-by-step guide to the Alzheimer's Disease Neuroimaging Initiative data: clinical tables, MRI and
+    PET, from the access request to NIfTI files. For machine-learning and deep-learning researchers.</p>
+  <div class="actions">
+    <a class="btn dark" href="{{ '/docs/00-rules.html' | relative_url }}">Start with step 0</a>
+    <a class="btn light" href="https://github.com/{{ site.repository }}">View on GitHub</a>
   </div>
   <ol class="steps">
     {% for s in site.steps %}
-    <li><a href="{{ s.url | relative_url }}">
-      <span class="num">{{ s.n }}</span>
-      <span class="st">{{ s.title }}</span>
-      <span class="sd">{{ s.what }}</span>
-      <span class="time">{{ s.time }}</span>
-    </a></li>
+    <li><a href="{{ s.url | relative_url }}"><span class="n">{{ s.n }}</span><span><span class="t">{{ s.title }}</span> <span class="d">· {{ s.what }}</span></span><span class="time">{{ s.time }}</span></a></li>
     {% endfor %}
   </ol>
-</section>
+</div>

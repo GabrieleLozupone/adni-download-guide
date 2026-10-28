@@ -5,7 +5,6 @@ url: "https://gabrielelozupone.github.io"
 repository: "GabrieleLozupone/adni-download-guide"
 verified: "28 October 2026"
 image: "/assets/img/og.png"
-logo: "/assets/img/og.png"
 
 markdown: kramdown
 kramdown:
@@ -39,17 +38,17 @@ exclude:
   - .gitignore
 
 nav:
-  - { n: "",  title: "Overview", url: "/" }
-  - { n: "0", title: "Rules (read first)", url: "/docs/00-rules.html" }
+  - { n: "", title: "Overview", url: "/" }
+  - { n: "0", title: "Rules", url: "/docs/00-rules.html" }
   - { n: "1", title: "Get access", url: "/docs/01-get-access.html" }
   - { n: "2", title: "Clinical tables", url: "/docs/02-tabular-data.html" }
   - { n: "3", title: "Choose images", url: "/docs/03-choose-images.html" }
   - { n: "4", title: "Collection & download", url: "/docs/04-collection-and-download.html" }
   - { n: "5", title: "After the download", url: "/docs/05-after-download.html" }
-  - { n: "?", title: "Troubleshooting", url: "/docs/06-troubleshooting.html" }
-  - { n: "Aa", title: "Glossary", url: "/docs/glossary.html" }
-  - { n: "py", title: "Helper scripts", url: "/scripts/" }
-  - { n: "AI", title: "Using an AI agent", url: "/AGENTS.html" }
+  - { n: "", sep: true, title: "Troubleshooting", url: "/docs/06-troubleshooting.html" }
+  - { n: "", title: "Glossary", url: "/docs/glossary.html" }
+  - { n: "", title: "Helper scripts", url: "/scripts/" }
+  - { n: "", title: "Using an AI agent", url: "/AGENTS.html" }
 
 steps:
   - { n: "0", title: "Rules", what: "What the Data Use Agreement allows", time: "10 min", url: "/docs/00-rules.html" }
