@@ -1,6 +1,6 @@
-# ADNI download guide
+# ADNI download guide: how to download the ADNI dataset from LONI IDA
 
-A plain, step-by-step guide to getting **ADNI** data (clinical tables and MRI/PET images) out of the
+A plain, step-by-step guide to getting **ADNI** (Alzheimer's Disease Neuroimaging Initiative) data (clinical tables and MRI/PET images) out of the
 **LONI Image & Data Archive (IDA)**, written for machine-learning and deep-learning researchers who have never used
 IDA before.
 
