@@ -16,3 +16,4 @@ ADNI/
 *.done
 __pycache__/
 .DS_Store
+.adni-progress.md
