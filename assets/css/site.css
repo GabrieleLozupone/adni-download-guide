@@ -10,12 +10,12 @@
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #212121;
-    --bg-2: #2a2a2a;
-    --bg-3: #343434;
+    --bg: #121212;
+    --bg-2: #181818;
+    --bg-3: #242424;
     --text: #ececec;
-    --muted: #a0a0a0;
-    --line: #3a3a3a;
+    --muted: #9b9b9b;
+    --line: #2a2a2a;
   }
 }
 
