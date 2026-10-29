@@ -1,5 +1,7 @@
 # ADNI download guide: how to download the ADNI dataset from LONI IDA
 
+[![DOI](https://zenodo.org/badge/1437210919.svg)](https://doi.org/10.5281/zenodo.23769997)
+
 A plain, step-by-step guide to getting **ADNI** (Alzheimer's Disease Neuroimaging Initiative) data (clinical tables and MRI/PET images) out of the
 **LONI Image & Data Archive (IDA)**, written for machine-learning and deep-learning researchers who have never used
 IDA before.
@@ -75,7 +77,8 @@ ADNI data, screenshots that show participant information, or your download links
 ## How to cite
 If this guide or its scripts helped your work, please cite it. GitHub shows a **"Cite this repository"** button in the
 right sidebar (from [`CITATION.cff`](https://github.com/GabrieleLozupone/adni-download-guide/blob/main/CITATION.cff)),
-with APA and BibTeX:
+with APA and BibTeX. The DOI [10.5281/zenodo.23769997](https://doi.org/10.5281/zenodo.23769997) (Zenodo)
+always points to the latest version:
 
 ```bibtex
 @software{lozupone_adni_download_guide,
@@ -83,7 +86,8 @@ with APA and BibTeX:
   title   = {{ADNI download guide: how to download the ADNI dataset from LONI IDA, with helper scripts}},
   year    = {2026},
   version = {1.1.0},
-  url     = {https://github.com/GabrieleLozupone/adni-download-guide}
+  doi     = {10.5281/zenodo.23769997},
+  url     = {https://doi.org/10.5281/zenodo.23769997}
 }
 ```
 This is in addition to what ADNI requires: the ADNI acknowledgement and authorship rules in the Data Use Agreement and
