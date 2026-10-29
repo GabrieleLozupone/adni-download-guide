@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: >-
+  If you use this guide or its scripts, please cite it as below. This does not replace the citation and
+  acknowledgement of ADNI required by the ADNI Data Use Agreement.
+type: software
+title: "ADNI download guide: how to download the ADNI dataset from LONI IDA, with helper scripts"
+abstract: >-
+  A step-by-step guide to downloading ADNI clinical tables and MRI/PET images from the LONI Image & Data Archive,
+  with dependency-free helper scripts to select one image per visit, download and test ZIPs, index the images and
+  convert them to BIDS.
+authors:
+  - family-names: Lozupone
+    given-names: Gabriele
+    affiliation: "University of Cassino and Southern Lazio"
+    email: gabriele.lozupone@unicas.it
+repository-code: "https://github.com/GabrieleLozupone/adni-download-guide"
+url: "https://gabrielelozupone.github.io/adni-download-guide/"
+license: MIT
+version: "1.1.0"
+date-released: "2026-10-29"
+keywords:
+  - ADNI
+  - Alzheimer's disease
+  - LONI IDA
+  - neuroimaging
+  - MRI
+  - PET
+  - BIDS
+  - dataset download

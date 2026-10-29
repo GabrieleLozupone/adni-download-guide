@@ -60,4 +60,5 @@ bash   scripts/download_urls.sh urls.txt /path/to/zips
 python scripts/check_zips.py /path/to/zips
 python scripts/index_images.py /path/to/raw/ADNI --out image_index.csv
 bash   scripts/convert_to_nifti.sh /path/to/raw/ADNI /path/to/nifti
+python scripts/ida_to_bids.py /path/to/zips --bids /path/to/bids --metadata search.csv --dry-run   # then without --dry-run
 ```

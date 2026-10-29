@@ -44,8 +44,8 @@ IDA before.
 ## Helper scripts (optional)
 The guide works with only a browser. The [scripts](https://github.com/GabrieleLozupone/adni-download-guide/tree/main/scripts) are small, dependency-free helpers for the boring parts
 that run **on files you have already downloaded yourself**: splitting long Image ID lists, keeping one image per visit,
-finding images missing from a collection, downloading ZIP links with resume, testing ZIPs and indexing the unpacked
-images. Requirements: Python 3.8+, `curl`, and optionally [`dcm2niix`](https://github.com/rordenlab/dcm2niix).
+finding images missing from a collection, downloading ZIP links with resume, testing ZIPs, indexing the unpacked
+images and converting them to **BIDS** (`ida_to_bids.py`). Requirements: Python 3.8+, `curl`, and optionally [`dcm2niix`](https://github.com/rordenlab/dcm2niix).
 
 ## Using an AI agent as your guide (optional)
 Open this folder with a coding agent and ask "help me download ADNI". It will interview you, take you through the steps
@@ -71,6 +71,23 @@ doesn't need to access.
 ## Contributing
 Found something that changed? Please open an issue or a pull request and say **the date** you checked. Never attach
 ADNI data, screenshots that show participant information, or your download links (they work without a login).
+
+## How to cite
+If this guide or its scripts helped your work, please cite it. GitHub shows a **"Cite this repository"** button in the
+right sidebar (from [`CITATION.cff`](https://github.com/GabrieleLozupone/adni-download-guide/blob/main/CITATION.cff)),
+with APA and BibTeX:
+
+```bibtex
+@software{lozupone_adni_download_guide,
+  author  = {Lozupone, Gabriele},
+  title   = {{ADNI download guide: how to download the ADNI dataset from LONI IDA, with helper scripts}},
+  year    = {2026},
+  version = {1.1.0},
+  url     = {https://github.com/GabrieleLozupone/adni-download-guide}
+}
+```
+This is in addition to what ADNI requires: the ADNI acknowledgement and authorship rules in the Data Use Agreement and
+the Data Sharing & Publication Policy linked above.
 
 ## License
 Text and scripts: [MIT](https://github.com/GabrieleLozupone/adni-download-guide/blob/main/LICENSE). ADNI data are governed only by the ADNI Data Use Agreement.

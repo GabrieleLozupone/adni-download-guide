@@ -26,6 +26,10 @@ The user runs every command; you read only the summary lines they paste. Never o
 5. **Convert** (needs dcm2niix)
    `bash scripts/convert_to_nifti.sh /path/to/raw/ADNI /path/to/nifti` → ask for the final counts. If some failed,
    they look at `conversion_errors.txt` themselves. You can explain dcm2niix messages they paraphrase.
+   Or, if they want a BIDS dataset: `python scripts/ida_to_bids.py /path/to/zips --bids /path/to/bids --metadata
+   search.csv --dry-run`, then the same without `--dry-run` → ask for the printed counts (targets, PET tracers,
+   converted/failed, orientations, 4D). `trc-unknown` means the CSV lacks the Imaging Protocol column; `unclassified`
+   images need a `--rules` line, written from the Descriptions they tell you (never from `images.tsv`).
 6. **Remind** the known image traps from `docs/05-after-download.md` (mixed orientations, mask origins, 4D PET,
    repeated scans), the split-by-RID rule, and to record the download date. Update `.adni-progress.md`.
 

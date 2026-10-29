@@ -55,6 +55,40 @@ bash scripts/convert_to_nifti.sh /path/to/ADNI_raw/ADNI /path/to/ADNI_nifti
 ```
 Warnings about slice spacing or missing fields are common. Check a few images visually before trusting a batch.
 
+### Or: straight to BIDS
+[BIDS](https://bids.neuroimaging.io/) is the folder layout most neuroimaging tools read (FastSurfer, fMRIPrep,
+Clinica, ...). `ida_to_bids.py` reads the ZIPs directly (no need to unpack) or the unpacked folders:
+
+```bash
+python scripts/ida_to_bids.py /path/to/ADNI_zips --bids /path/to/ADNI_bids \
+    --metadata search_results.csv --jobs 4 --dry-run     # check the plan first, then run without --dry-run
+```
+What you get:
+
+```
+ADNI_bids/
+  sub-ADNI000S0000/ses-20000101/anat/sub-ADNI000S0000_ses-20000101_T1w.nii.gz (+ .json)   (made-up example)
+  sub-ADNI000S0000/ses-20000301/pet/sub-ADNI000S0000_ses-20000301_trc-AV45_rec-6mm_pet.nii.gz
+  derivatives/ida/sub-.../anat/..._desc-brain_mask.nii.gz       masks and segmentations from IDA
+  participants.tsv  dataset_description.json
+  code/ida_to_bids/images.tsv                                   one row per Image ID
+```
+- **Subject** = project + Subject ID (`000_S_0000` → `sub-ADNI000S0000`); **session** = the acquisition date, which
+  avoids the ambiguity of visit codes. Link sessions to clinical visits by date (section 5 below).
+- **MRI type** comes from the Description (MPRAGE, SPGR → `T1w`; FLAIR; T2). Localizers and calibrations are skipped;
+  anything unrecognised is listed as `unclassified` in `images.tsv`. Add your own rules with `--rules`.
+- **PET tracer**: ADNI pre-processed PET descriptions often don't name the tracer. Pass the CSV of your search or
+  collection with the **Imaging Protocol** column (add it under "Display in result"), or you get `trc-unknown`.
+  `rec-` is the ADNI processing level (`6mm`, `uniformres`, `stdimgvox`, `coregavg`, `raw`).
+- **Repeats** in one visit get `run-1`, `run-2`. Better: select one image per visit before downloading (step 3).
+- The conversion is faithful (no resampling, no reorientation). `images.tsv` records shape, voxel size, orientation
+  and 4D images, so the traps below are easy to find. Run the same command again to resume.
+- Each `.json` sidecar keeps the dcm2niix fields plus `IDA_ImageID`, `IDA_SubjectID`, `IDA_Description`, so every file
+  can be traced back to IDA and to the tables.
+
+Check the result with the [BIDS validator](https://bids-standard.github.io/bids-validator/) (it runs locally in your
+browser or from the command line; the files are not uploaded).
+
 ## 4. Traps we found in the images
 
 - **Mixed orientations** across phases and modalities. Reorient everything to one convention before training, for

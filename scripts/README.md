@@ -14,9 +14,19 @@ for conversion.
 | `check_zips.py` | [5](../docs/05-after-download.md) | Test every ZIP in a folder (Zip64 OK) |
 | `index_images.py` | [5](../docs/05-after-download.md) | Build `image_index.csv` (subject, description, date, Image ID, format, path) from the unpacked folders |
 | `convert_to_nifti.sh` | [5](../docs/05-after-download.md) | DICOM → `.nii.gz` with dcm2niix, one file per Image ID |
+| `ida_to_bids.py` | [5](../docs/05-after-download.md) | ZIPs (or unpacked folders) → BIDS dataset, with `images.tsv` (one row per Image ID: name, grid, orientation, sha256) and `participants.tsv` |
 
 Run each with `--help` (Python) or without arguments (shell) for usage. Tests use only synthetic data:
 `python -m unittest discover tests`.
+
+## Adding a script
+We add scripts here when one of our own processing steps turns out to be useful to others. Each script:
+- runs on files the user downloaded and never contacts IDA (only `download_urls.sh` fetches the user's own links);
+- needs only the Python standard library, plus external tools that are named and checked (`curl`, `dcm2niix`);
+- prints **counts only** and writes details to files, so an AI agent can read the summary without seeing data;
+- treats downloads as untrusted (no paths taken from ZIP member names);
+- has a test in `tests/` on synthetic data, a row in the table above, a mention in the guide step where it is used and
+  in `AGENTS.md`, and a line in `CHANGELOG.md`; the `version` in `CITATION.cff` goes up.
 
 Never commit your inputs or outputs (CSV exports, ID lists, URL lists, indexes): they are ADNI data or give access to
 it. The repository's `.gitignore` blocks the usual file types, but check `git status` before every commit.
